@@ -15,7 +15,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+
+// Initialize Firebase Authentication
+const auth = getAuth(app);  // Make sure 'auth' is initialized after 'initializeApp'
 
 // Signup function
 async function signup() {
