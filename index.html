@@ -36,30 +36,33 @@
             background-color: #45a049;
         }
         .message {
-            color: red;
             text-align: center;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
     <h2>Firebase Login and Signup</h2>
 
+    <!-- Signup Form -->
     <div id="signupForm" class="form-container">
         <h3>Signup</h3>
         <input type="email" id="signupEmail" placeholder="Email" required />
         <input type="password" id="signupPassword" placeholder="Password" required />
-        <button onclick="signup()">Sign Up</button>
+        <button type="button" id="signupBtn" onclick="signup()">Sign Up</button>
         <div id="signupMessage" class="message"></div>
     </div>
 
+    <!-- Login Form -->
     <div id="loginForm" class="form-container">
         <h3>Login</h3>
         <input type="email" id="loginEmail" placeholder="Email" required />
         <input type="password" id="loginPassword" placeholder="Password" required />
-        <button onclick="login()">Login</button>
+        <button type="button" id="loginBtn" onclick="login()">Login</button>
         <div id="loginMessage" class="message"></div>
     </div>
 
+    <!-- Link to Firebase SDK -->
     <script type="module" src="app.js"></script>
 </body>
 </html>
