@@ -1,8 +1,8 @@
-// Import Firebase functions
-import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+// Import the necessary functions from Firebase SDKs
+import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
-// Your Firebase configuration (from Firebase console)
+// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBvJCpvsnHDQqV6oW4XHXTp11AETXdpyv8",
   authDomain: "loginsignup-35ead.firebaseapp.com",
@@ -13,11 +13,11 @@ const firebaseConfig = {
   measurementId: "G-DJLKX31V66"
 };
 
-// Initialize Firebase
+// Initialize Firebase app
 const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication
-const auth = getAuth(app);  // Make sure 'auth' is initialized after 'initializeApp'
+const auth = getAuth(app);  // This should be initialized AFTER app
 
 // Signup function
 async function signup() {
@@ -54,3 +54,7 @@ async function login() {
         console.error(error); // Log error details to the console
     }
 }
+
+// Ensure the functions are accessible to the HTML
+document.getElementById("signupBtn").onclick = signup;
+document.getElementById("loginBtn").onclick = login;
