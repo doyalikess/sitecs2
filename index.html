@@ -1,95 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Firebase Auth Debugging</title>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-  <style>
-    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-    .form { max-width: 300px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; }
-    .form input { display: block; width: 100%; margin: 10px 0; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
-    .form button { width: 100%; padding: 10px; border: none; border-radius: 5px; background-color: #28a745; color: white; font-size: 16px; cursor: pointer; }
-    .form button:hover { background-color: #218838; }
-    .message { margin-top: 20px; font-weight: bold; color: #333; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup and Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            color: red;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-  <h1>Firebase Auth Debugging</h1>
+    <h2>Firebase Login and Signup</h2>
 
-  <!-- Signup Form -->
-  <div class="form" id="signup-form">
-    <h2>Signup</h2>
-    <input type="email" id="signup-email" placeholder="Enter Email" required />
-    <input type="password" id="signup-password" placeholder="Enter Password" required />
-    <button onclick="signup()">Signup</button>
-  </div>
+    <div id="signupForm" class="form-container">
+        <h3>Signup</h3>
+        <input type="email" id="signupEmail" placeholder="Email" required />
+        <input type="password" id="signupPassword" placeholder="Password" required />
+        <button onclick="signup()">Sign Up</button>
+        <div id="signupMessage" class="message"></div>
+    </div>
 
-  <!-- Login Form -->
-  <div class="form" id="login-form">
-    <h2>Login</h2>
-    <input type="email" id="login-email" placeholder="Enter Email" required />
-    <input type="password" id="login-password" placeholder="Enter Password" required />
-    <button onclick="login()">Login</button>
-  </div>
+    <div id="loginForm" class="form-container">
+        <h3>Login</h3>
+        <input type="email" id="loginEmail" placeholder="Email" required />
+        <input type="password" id="loginPassword" placeholder="Password" required />
+        <button onclick="login()">Login</button>
+        <div id="loginMessage" class="message"></div>
+    </div>
 
-  <!-- Message Display -->
-  <div class="message" id="message"></div>
-
-  <script>
-    // Firebase Configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyBvJCpvsnHDQqV6oW4XHXTp11AETXdpyv8",
-      authDomain: "loginsignup-35ead.firebaseapp.com",
-      projectId: "loginsignup-35ead",
-      storageBucket: "loginsignup-35ead.firebasestorage.app",
-      messagingSenderId: "954072223066",
-      appId: "1:954072223066:web:49bf37c0f179166f9cb763",
-      measurementId: "G-DJLKX31V66"
-    };
-
-    // Initialize Firebase
-    const app = firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-
-    console.log("Firebase initialized:", app); // Debug Firebase initialization
-
-    // Signup Function
-    function signup() {
-      console.log("Signup button clicked");
-      const email = document.getElementById("signup-email").value;
-      const password = document.getElementById("signup-password").value;
-
-      auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log("Signup successful:", user);
-          document.getElementById("message").innerText = `Signup successful! Welcome, ${user.email}.`;
-        })
-        .catch((error) => {
-          console.error("Error during signup:", error);
-          document.getElementById("message").innerText = `Error: ${error.message}`;
-        });
-    }
-
-    // Login Function
-    function login() {
-      console.log("Login button clicked");
-      const email = document.getElementById("login-email").value;
-      const password = document.getElementById("login-password").value;
-
-      auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log("Login successful:", user);
-          document.getElementById("message").innerText = `Welcome back, ${user.email}!`;
-        })
-        .catch((error) => {
-          console.error("Error during login:", error);
-          document.getElementById("message").innerText = `Error: ${error.message}`;
-        });
-    }
-  </script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>
